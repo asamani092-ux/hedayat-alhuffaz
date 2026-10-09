@@ -12,7 +12,7 @@ directory = "./public"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
 
-# النطاقات المخصصة (aias.sa و www.aias.sa) مربوطة عبر واجهة النطاقات للعامل.
+# النطاق المخصص: hedayat.aias.sa — مربوط عبر واجهة النطاقات للعامل.
 # تجنّب [[routes]] هنا لأن رمز الواجهة الحالي بلا صلاحية مسارات المنطقة.
 
 # المهمة الدورية — كانت runSmartMonitor في Apps Script.
