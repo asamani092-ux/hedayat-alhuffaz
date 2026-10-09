@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مقرأة هدايات الحفّاظ</title>
+  <style>
+    :root {
+      --bg0: #0f2a24;
+      --bg1: #1a453a;
+      --ink: #f3efe6;
+      --muted: #c7d6cf;
+      --accent: #c4a35a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Scheherazade New", "Amiri", "Traditional Arabic", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(196,163,90,.25), transparent 60%),
+        linear-gradient(160deg, var(--bg0), var(--bg1) 55%, #0b1c18);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+    main { max-width: 36rem; text-align: center; }
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      margin: 0 0 .6rem;
+      letter-spacing: .02em;
+      animation: rise .8s ease both;
+    }
+    p {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.8;
+      animation: rise .8s .15s ease both;
+    }
+    .status {
+      margin-top: 1.6rem;
+      color: var(--accent);
+      font-size: 1rem;
+      animation: rise .8s .3s ease both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>هدايات الحفّاظ</h1>
+    <p>نظام إدارة المقرأة: رصد يومي، ترتيب، ودفعات. البنية منشورة وجاهزة لاستكمال المسارات والواجهات.</p>
+    <p class="status" id="health">جارٍ التحقق…</p>
+  </main>
+  <script>
+    fetch('/api/health')
+      .then((r) => r.json())
+      .then((d) => {
+        document.getElementById('health').textContent =
+          d && d.ok ? 'الخدمة تعمل' : 'الخدمة غير جاهزة';
+      })
+      .catch(() => {
+        document.getElementById('health').textContent = 'تعذّر الاتصال بالخدمة';
+      });
+  </script>
+</body>
+</html>

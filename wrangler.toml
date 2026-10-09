@@ -1,0 +1,33 @@
+name = "hedayat-alhuffaz"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hedayat-db"
+database_id = "a3449232-a052-41ca-9066-69fac2aa725d"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[[routes]]
+pattern = "aias.sa"
+custom_domain = true
+
+[[routes]]
+pattern = "www.aias.sa"
+custom_domain = true
+
+# المهمة الدورية — كانت runSmartMonitor في Apps Script.
+# تعمل يومياً بعد موعد الرصد النهائي: تحدّث أيام التأخر وترصد المنقطعين.
+[triggers]
+crons = ["0 21 * * *"]
+
+[vars]
+TIMEZONE = "Asia/Riyadh"
+RECORDING_DEADLINE_HOUR = "23"
+
+# الأسرار تُضبط بـ: wrangler secret put <NAME>
+# SESSION_SECRET — لتوقيع الجلسات
