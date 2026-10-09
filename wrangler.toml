@@ -12,13 +12,8 @@ directory = "./public"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
 
-[[routes]]
-pattern = "aias.sa"
-custom_domain = true
-
-[[routes]]
-pattern = "www.aias.sa"
-custom_domain = true
+# النطاقات المخصصة (aias.sa و www.aias.sa) مربوطة عبر واجهة النطاقات للعامل.
+# تجنّب [[routes]] هنا لأن رمز الواجهة الحالي بلا صلاحية مسارات المنطقة.
 
 # المهمة الدورية — كانت runSmartMonitor في Apps Script.
 # تعمل يومياً بعد موعد الرصد النهائي: تحدّث أيام التأخر وترصد المنقطعين.
